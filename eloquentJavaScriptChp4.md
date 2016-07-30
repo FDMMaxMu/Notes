@@ -79,3 +79,28 @@ The previous program manages lists of tasks. You add tasks to the end of the lis
 The indexOf method has a sibling called lastIndexOf, which starts searching for the given element at the end of the array instead of the front.
 
 Another fundamental method is slice, which takes a start index and an end index and returns an array that has only the elements between those indices. The start index is inclusive, the end index exclusive.
+
+### Strings and their properties:
+Values of type string, number, and Boolean are not objects. The values are immutable and cannot be changed. These primitive values only have built-in properties and functions. Users could not stick new properties and functions to them.
+indexOf()
+trim() -> remove whitespace
+
+### The arguments object
+Whenever a function is called, a special variable named arguments is added to the environment in which the function body runs. This variable refers to an object that holds all of the arguments passed to the function. Remember that in JavaScript you are allowed to pass more (or fewer) arguments to a function than the number of parameters the function itself declares.
+
+This arguments() object has a length property but it is actually not an array. (no slice() or indexOf() method.)
+function argumentCounter() {
+  console.log("You gave me", arguments.length, "arguments.");
+}
+argumentCounter("Straw man", "Tautology", "Ad hominem");
+// → You gave me 3 arguments.
+
+// Real world situation:
+function addEntry(squirrel) {
+  var entry = {events: [], squirrel: squirrel};
+  for (var i = 1; i < arguments.length; i++)
+    entry.events.push(arguments[i]);
+  journal.push(entry);
+}
+addEntry(true, "work", "touched tree", "pizza",
+        "running", "television");
